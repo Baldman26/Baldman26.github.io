@@ -5,7 +5,7 @@ poopie bum bum
 [fraggle rock](https://www.youtube.com/watch?v=fxMMte0ya9w&list=PLLhOnau-tupSx7f-dlRzc0Q0OoEqpv9WV&index=2)
 
 
-![don't press this](https://i.pinimg.com/564x/2e/ed/b8/2eedb8d4e1e6fc4e15d03b25d09a8ae3.jpg)
+![don't press this](https://i.pinimg.com/originals/33/5d/9d/335d9d7725652e40ba8018f0730d96bf.gif)
 
 
 [fish webpage](https://baldman26.github.io/noFishhere.html)
