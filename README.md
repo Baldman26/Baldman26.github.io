@@ -15,45 +15,48 @@ poopie bum bum
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Meme Generator</title>
-</head>
-<body>
-    <h1>AI Meme Generator</h1>
-    <div id="meme-container">
-        <img id="meme-img" src="" alt="Meme Image">
-        <p id="ai-quote"></p>
-        <button id="generate-btn">Generate Meme</button>
-    </div>
+// Function to fetch a random image URL using Google Custom Search API
+const fetchRandomImage = async () => {
+    const apiKey = 'YOUR_API_KEY'; // Replace with your Google API key
+    const searchEngineId = 'YOUR_SEARCH_ENGINE_ID'; // Replace with your Google Custom Search Engine ID
+    const query = 'random image'; // You can adjust the query as needed
 
-    <script src="script.js"></script>
-</body>
-</html>
-const generateMeme = async () => {
-    // 1. Fetch random image URL from Google (replace with actual API call)
-    const imageUrl = await getRandomImageUrl();
+    const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${searchEngineId}&q=${encodeURIComponent(query)}&searchType=image`;
 
-    // 2. Fetch AI-generated quote (replace with your AI quote generation logic)
-    const aiQuote = generateAIQuote();
-
-    // 3. Update HTML elements
-    const memeImg = document.getElementById('meme-img');
-    const aiQuoteElem = document.getElementById('ai-quote');
-
-    memeImg.src = imageUrl;
-    aiQuoteElem.textContent = aiQuote;
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        if (data.items && data.items.length > 0) {
+            const randomImage = data.items[Math.floor(Math.random() * data.items.length)];
+            return randomImage.link; // Return the direct link to the image
+        } else {
+            throw new Error('No image results found');
+        }
+    } catch (error) {
+        console.error('Error fetching random image:', error);
+        return null;
+    }
 };
+const generateMeme = async () => {
+    try {
+        // 1. Fetch random image URL from Google Custom Search API
+        const imageUrl = await fetchRandomImage();
 
-// Example function to fetch random image URL (replace with actual implementation)
-const getRandomImageUrl = async () => {
-    // Implement logic to fetch random image URL from Google or another source
-    // For example, you could use Google Custom Search API
-    // Make sure to handle API key and request properly
-    return 'https://example.com/random-image.jpg';
+        // 2. Fetch AI-generated quote (replace with your AI quote generation logic)
+        const aiQuote = generateAIQuote();
+
+        // 3. Update HTML elements
+        const memeImg = document.getElementById('meme-img');
+        const aiQuoteElem = document.getElementById('ai-quote');
+
+        memeImg.src = imageUrl;
+        aiQuoteElem.textContent = aiQuote;
+    } catch (error) {
+        console.error('Error generating meme:', error);
+    }
 };
 
 // Example function to generate AI quote (replace with actual implementation)
