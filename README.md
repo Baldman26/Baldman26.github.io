@@ -4,6 +4,7 @@ poopie bum bum
 
 [Megamind shrine](mega.html)
 
+[Elon musk aesthetic](elonbbg.html)
 
 [fraggle rock](https://www.youtube.com/watch?v=fxMMte0ya9w&list=PLLhOnau-tupSx7f-dlRzc0Q0OoEqpv9WV&index=2)
 
